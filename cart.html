@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng & Thanh Toán - Vietjet</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/1794032794428_7798941419347914444_g4111106518249197050_b20246c106060b907dfe9e17d280275d.jpg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <!-- SQLite WebAssembly -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+    <!-- EmailJS Client SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div>🛒 Giỏ hàng & Hoàn tất đặt chỗ trực tuyến an toàn cùng Vietjet</div>
+            <div>Tổng đài hỗ trợ 24/7: <a href="tel:19001886" class="hotline-link">📞 1900 1886</a></div>
+        </div>
+    </div>
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+        <div class="navbar-container">
+            <a href="index.html" class="brand-logo" title="Vietjet Airways">
+                <img src="images/1794032794428_7798941419347914444_g4111106518249197050_b20246c106060b907dfe9e17d280275d.jpg" alt="Vietjet Logo">
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Trang Chủ</a>
+                <a href="flights.html" class="nav-link">Chuyến Bay</a>
+                <a href="tour.html" class="nav-link">Tour Du Lịch</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="cart.html" class="cart-btn" style="background: var(--vj-primary); color: #fff;">
+                    <span>🛒 Giỏ Hàng</span>
+                    <span class="cart-badge" style="background: #ffc700; color: #000;">0</span>
+                </a>
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CART CONTENT -->
+    <main class="container cart-page-container">
+
+        <h1 class="section-title" style="margin-bottom: 25px; text-align: left;">GIỎ HÀNG CỦA BẠN</h1>
+
+        <div class="cart-layout">
+
+            <!-- CỘT BÊN TRÁI: DANH SÁCH MỤC ĐÃ CHỌN -->
+            <section class="cart-items-card">
+                <div class="cart-card-header">
+                    <h2>Các Chuyến Bay & Tour Đã Chọn</h2>
+                    <button type="button" class="btn-clear-cart" onclick="confirmClearCart()">
+                        🗑️ Xóa toàn bộ giỏ hàng
+                    </button>
+                </div>
+
+                <!-- Container danh sách sản phẩm trong giỏ -->
+                <div id="cartItemsContainer" class="cart-items-list">
+                    <div style="text-align: center; padding: 40px; color: #6b7280;">
+                        Đang tải dữ liệu giỏ hàng từ SQLite...
+                    </div>
+                </div>
+            </section>
+
+            <!-- CỘT BÊN PHẢI: FORM THÔNG TIN CÁ NHÂN & ĐĂNG KÝ -->
+            <aside class="checkout-form-card">
+                <h3>THÔNG TIN KHÁCH HÀNG</h3>
+
+                <form id="checkoutForm" onsubmit="handleCheckout(event)">
+                    <div class="form-group-full">
+                        <label class="form-label" style="font-size: 13px; font-weight: 700; color: #374151;">Họ và Tên (*)</label>
+                        <input type="text" id="custName" class="form-control" placeholder="Ví dụ: Nguyễn Văn Hải" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" style="font-size: 13px; font-weight: 700; color: #374151;">Số Điện Thoại (*)</label>
+                            <input type="tel" id="custPhone" class="form-control" placeholder="0901234567" required pattern="[0-9]{9,11}">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" style="font-size: 13px; font-weight: 700; color: #374151;">Số CCCD / Hộ Chiếu (*)</label>
+                            <input type="text" id="custIdCard" class="form-control" placeholder="079093001234" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group-full">
+                        <label class="form-label" style="font-size: 13px; font-weight: 700; color: #374151;">
+                            Địa Chỉ Email Nhận Thư Xác Nhận (*)
+                        </label>
+                        <input type="email" id="custEmail" class="form-control" placeholder="khachhang@gmail.com" required>
+                        <small style="font-size: 11px; color: #6b7280; display: block; margin-top: 3px;">
+                            ✉️ Thư xác nhận sẽ được gửi từ <strong>nvhai061993@gmail.com</strong> tới email này.
+                        </small>
+                    </div>
+
+                    <div class="form-group-full">
+                        <label class="form-label" style="font-size: 13px; font-weight: 700; color: #374151;">Địa Chỉ Liên Hệ</label>
+                        <input type="text" id="custAddress" class="form-control" placeholder="Số nhà, đường, quận/huyện, tỉnh thành">
+                    </div>
+
+                    <div class="form-group-full">
+                        <label class="form-label" style="font-size: 13px; font-weight: 700; color: #374151;">Ghi Chú Yêu Cầu Thêm</label>
+                        <textarea id="custNotes" class="form-control" rows="2" placeholder="Ví dụ: Ghế cạnh cửa sổ, yêu cầu suất ăn đặc biệt..."></textarea>
+                    </div>
+
+                    <!-- Phương thức thanh toán -->
+                    <label style="font-size: 13px; font-weight: 700; color: #374151; display: block; margin-top: 15px;">
+                        Phương Thức Thanh Toán:
+                    </label>
+                    <div class="payment-methods-grid">
+                        <label class="payment-method-card">
+                            <input type="radio" name="pay_method" value="Chuyển khoản VietQR (Miễn phí)" checked>
+                            <div class="payment-method-label">
+                                <span class="method-name">⚡ Chuyển Khoản Nhanh VietQR</span>
+                                <span class="method-sub">Quét mã QR qua mọi ứng dụng ngân hàng & ví điện tử</span>
+                            </div>
+                        </label>
+
+                        <label class="payment-method-card">
+                            <input type="radio" name="pay_method" value="Thẻ tín dụng / Ghi nợ Quốc tế">
+                            <div class="payment-method-label">
+                                <span class="method-name">💳 Thẻ Visa / Mastercard / JCB</span>
+                                <span class="method-sub">Thanh toán bảo mật chuẩn 3D-Secure</span>
+                            </div>
+                        </label>
+
+                        <label class="payment-method-card">
+                            <input type="radio" name="pay_method" value="Thanh toán sau (Giữ chỗ 24h)">
+                            <div class="payment-method-label">
+                                <span class="method-name">⏱ Giữ Chỗ & Thanh Toán Sau (24h)</span>
+                                <span class="method-sub">Thanh toán tại đại lý hoặc phòng vé Vietjet</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Hộp tóm tắt tài chính -->
+                    <div class="order-summary-box">
+                        <div class="summary-line">
+                            <span>Tạm tính giỏ hàng:</span>
+                            <span id="subtotalDisplay">0 ₫</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Thuế & Phí dịch vụ sân bay:</span>
+                            <span style="color: #10b981; font-weight: 600;">Miễn phí</span>
+                        </div>
+                        <div class="summary-total">
+                            <span class="summary-total-label">TỔNG THANH TOÁN:</span>
+                            <span id="grandTotalDisplay" class="summary-total-price">0 ₫</span>
+                        </div>
+                    </div>
+
+                    <!-- Nút Đăng Ký Đặt Vé -->
+                    <button type="submit" id="btnSubmitBooking" class="btn btn-primary btn-block btn-lg" style="height: 50px;">
+                        ✓ ĐĂNG KÝ ĐẶT VÉ & TOUR
+                    </button>
+                </form>
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- MODAL POPUP THÔNG BÁO HOÀN THÀNH (SUCCESS NOTIFICATION) -->
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="success-icon-wrap">✓</div>
+            <h2 class="modal-title">ĐẶT CHỖ HOÀN TẤT!</h2>
+            <p class="modal-subtitle">Cảm ơn Quý khách đã tin tưởng và đồng hành cùng Vietjet.</p>
+
+            <!-- Khung Mã PNR -->
+            <div class="pnr-box">
+                <div class="pnr-label">MÃ ĐẶT CHỖ (PNR) CỦA BẠN:</div>
+                <div id="modalPnrCode" class="pnr-code">VJ-829104</div>
+            </div>
+
+            <!-- Ghi chú thông báo gửi Email từ nvhai061993@gmail.com -->
+            <div class="modal-email-note">
+                ✉️ <strong>Xác nhận gửi email:</strong> Một thư xác nhận chi tiết hành trình đã được hệ thống gửi tự động từ <strong>nvhai061993@gmail.com</strong> tới hộp thư: <strong id="modalCustEmail">...</strong>
+            </div>
+
+            <div class="modal-actions">
+                <a href="index.html" class="btn btn-primary">Về Trang Chủ</a>
+                <a href="flights.html" class="btn btn-outline">Tiếp Tục Đặt Vé</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-bottom" style="border: none; padding-top: 0;">
+            <div>© 2026 Vietjet. Hệ thống giao dịch thương mại điện tử du lịch.</div>
+            <div>Hotline: 1900 1886 | Email: support@vietjetair.com</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/database.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/email.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

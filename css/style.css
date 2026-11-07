@@ -1,0 +1,696 @@
+/* ====================================================================
+   VIETJET AIRWAYS - DESIGN SYSTEM & MASTER STYLESHEET
+   File: css/style.css
+   Màu chủ đạo: Đỏ (#ee1d23), Vàng (#ffc700), Nền trắng (#ffffff)
+   ==================================================================== */
+
+:root {
+    --vj-primary: #ee1d23;
+    --vj-primary-dark: #c41318;
+    --vj-primary-light: #fff0f1;
+    --vj-secondary: #ffc700;
+    --vj-secondary-dark: #e0ae00;
+    --vj-secondary-light: #fffbe6;
+    
+    --vj-bg-main: #ffffff;
+    --vj-bg-light: #f8f9fa;
+    --vj-bg-card: #ffffff;
+    
+    --vj-text-main: #1f2937;
+    --vj-text-muted: #6b7280;
+    --vj-border: #e5e7eb;
+    --vj-border-focus: #ee1d23;
+    
+    --vj-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --vj-shadow-md: 0 4px 14px rgba(0, 0, 0, 0.08);
+    --vj-shadow-lg: 0 10px 25px rgba(238, 29, 35, 0.12);
+    
+    --vj-radius-sm: 6px;
+    --vj-radius-md: 10px;
+    --vj-radius-lg: 16px;
+    --vj-radius-full: 9999px;
+    
+    --vj-container: 1200px;
+    --vj-transition: all 0.25s ease-in-out;
+}
+
+/* Reset & Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--vj-text-main);
+    background-color: var(--vj-bg-main);
+    line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--vj-transition);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.container {
+    max-width: var(--vj-container);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Typography & Headers */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.3;
+    color: #111827;
+}
+
+.section-title {
+    font-size: 26px;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    color: #111827;
+    margin-bottom: 8px;
+    position: relative;
+    letter-spacing: -0.5px;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--vj-primary);
+    margin: 10px auto 0;
+    border-radius: var(--vj-radius-full);
+}
+
+.section-subtitle {
+    font-size: 15px;
+    color: var(--vj-text-muted);
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: var(--vj-radius-md);
+    border: none;
+    cursor: pointer;
+    transition: var(--vj-transition);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background-color: var(--vj-primary);
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(238, 29, 35, 0.25);
+}
+
+.btn-primary:hover {
+    background-color: var(--vj-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(238, 29, 35, 0.35);
+}
+
+.btn-secondary {
+    background-color: var(--vj-secondary);
+    color: #1a1a1a;
+    box-shadow: 0 2px 6px rgba(255, 199, 0, 0.25);
+}
+
+.btn-secondary:hover {
+    background-color: var(--vj-secondary-dark);
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--vj-primary);
+    color: var(--vj-primary);
+}
+
+.btn-outline:hover {
+    background: var(--vj-primary-light);
+}
+
+.btn-sm {
+    padding: 6px 14px;
+    font-size: 13px;
+}
+
+.btn-lg {
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* Top bar Hotline */
+.top-bar {
+    background: #fdfdfd;
+    border-bottom: 1px solid var(--vj-border);
+    padding: 6px 0;
+    font-size: 13px;
+    color: var(--vj-text-muted);
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hotline-link {
+    color: var(--vj-primary);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Header & Navbar */
+.site-header {
+    background: #ffffff;
+    box-shadow: var(--vj-shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    max-width: var(--vj-container);
+    margin: 0 auto;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-logo img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-link {
+    font-weight: 600;
+    color: #374151;
+    font-size: 15px;
+    padding: 8px 4px;
+    position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--vj-primary);
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--vj-primary);
+    border-radius: 2px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cart-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: var(--vj-radius-full);
+    background: var(--vj-primary-light);
+    color: var(--vj-primary);
+    font-weight: 700;
+    border: 1px solid rgba(238, 29, 35, 0.2);
+}
+
+.cart-btn:hover {
+    background: var(--vj-primary);
+    color: #ffffff;
+}
+
+.cart-badge {
+    background: var(--vj-primary);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    border: 2px solid #ffffff;
+}
+
+.cart-btn:hover .cart-badge {
+    background: var(--vj-secondary);
+    color: #000;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #374151;
+}
+
+/* Hero Section with Vietjet Banner */
+.hero-section {
+    position: relative;
+    min-height: 520px;
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+                url('../images/1794032794427_7798941419347914444_g4111106518249197050_69fd368cc2bf83bc8ead69ab8ee75135.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0 60px;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-heading {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-heading h1 {
+    font-size: 36px;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.hero-heading p {
+    font-size: 18px;
+    opacity: 0.95;
+    font-weight: 500;
+}
+
+/* Flight Search Box */
+.flight-search-box {
+    background: #ffffff;
+    border-radius: var(--vj-radius-lg);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    padding: 24px 28px;
+    border-top: 5px solid var(--vj-primary);
+}
+
+.search-trip-types {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--vj-border);
+    padding-bottom: 12px;
+}
+
+.trip-radio-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.trip-radio-label input[type="radio"] {
+    accent-color: var(--vj-primary);
+    width: 16px;
+    height: 16px;
+}
+
+.search-fields-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1.2fr 1fr 1fr 1fr auto;
+    gap: 14px;
+    align-items: flex-end;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #4b5563;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--vj-border);
+    border-radius: var(--vj-radius-md);
+    background: #ffffff;
+    color: #1f2937;
+    font-size: 14px;
+    font-weight: 500;
+    outline: none;
+    transition: var(--vj-transition);
+}
+
+.form-control:focus {
+    border-color: var(--vj-primary);
+    box-shadow: 0 0 0 3px rgba(238, 29, 35, 0.12);
+}
+
+.form-control:disabled {
+    background: #f3f4f6;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* 8 Tour Cards Grid (Thumbnail 600x400) */
+.featured-tours-section {
+    padding: 60px 0;
+    background: #ffffff;
+}
+
+.tours-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.tour-card {
+    background: var(--vj-bg-card);
+    border: 1px solid var(--vj-border);
+    border-radius: var(--vj-radius-md);
+    overflow: hidden;
+    box-shadow: var(--vj-shadow-sm);
+    transition: var(--vj-transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.tour-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--vj-shadow-lg);
+    border-color: rgba(238, 29, 35, 0.3);
+}
+
+.tour-thumbnail-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 600 / 400; /* Chuẩn 600x400 */
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.tour-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.tour-card:hover .tour-thumbnail {
+    transform: scale(1.06);
+}
+
+.tour-duration-tag {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--vj-radius-full);
+}
+
+.tour-card-body {
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.tour-agency-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--vj-primary);
+    margin-bottom: 8px;
+}
+
+.tour-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 42px;
+}
+
+.tour-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #4b5563;
+    margin-bottom: 12px;
+}
+
+.tour-card-footer {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--vj-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tour-price-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.tour-price-label {
+    font-size: 11px;
+    color: var(--vj-text-muted);
+}
+
+.tour-price-num {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--vj-primary);
+}
+
+/* Airlines Grid Section */
+.airlines-partner-section {
+    padding: 50px 0 60px;
+    background: var(--vj-bg-light);
+}
+
+.airlines-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+}
+
+.airline-card {
+    background: #ffffff;
+    border: 1px solid var(--vj-border);
+    border-radius: var(--vj-radius-md);
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--vj-transition);
+}
+
+.airline-card:hover {
+    border-color: var(--vj-primary);
+    transform: translateY(-4px);
+    box-shadow: var(--vj-shadow-md);
+}
+
+.airline-card img {
+    height: 44px;
+    max-width: 100%;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.airline-card span {
+    font-size: 13px;
+    font-weight: 700;
+    color: #374151;
+}
+
+/* Footer */
+.site-footer {
+    background: #111827;
+    color: #9ca3af;
+    padding: 50px 0 25px;
+    font-size: 14px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-links a:hover {
+    color: var(--vj-secondary);
+}
+
+.footer-bottom {
+    border-top: 1px solid #1f2937;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+    .tours-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .airlines-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .search-fields-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        gap: 15px;
+    }
+    .main-nav.active {
+        display: flex;
+    }
+    .mobile-menu-toggle {
+        display: block;
+    }
+    .tours-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .search-fields-grid {
+        grid-template-columns: 1fr;
+    }
+    .airlines-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .tours-grid {
+        grid-template-columns: 1fr;
+    }
+}

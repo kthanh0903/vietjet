@@ -1,0 +1,387 @@
+/* ====================================================================
+   VIETJET AIRWAYS - TOUR & TOUR DETAIL STYLESHEET
+   File: css/tour.css
+   ==================================================================== */
+
+.tour-page-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&fit=crop') center/cover no-repeat;
+    color: #ffffff;
+    padding: 60px 0;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.tour-page-header h1 {
+    font-size: 34px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.tour-page-header p {
+    font-size: 16px;
+    opacity: 0.95;
+}
+
+/* Tour List 2-Column Layout */
+.tours-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.tour-list-results {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Thẻ Tour dạng ngang (Horizontal Card) cho trang danh sách Tour */
+.tour-item-row {
+    background: #ffffff;
+    border: 1px solid var(--vj-border);
+    border-radius: var(--vj-radius-lg);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    box-shadow: var(--vj-shadow-sm);
+    transition: var(--vj-transition);
+}
+
+.tour-item-row:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--vj-shadow-md);
+    border-color: var(--vj-primary);
+}
+
+.tour-row-thumb-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+}
+
+.tour-row-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tour-row-content {
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tour-meta-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.tour-agency-badge {
+    color: var(--vj-primary);
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tour-item-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.tour-item-highlights {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.tour-item-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    color: #4b5563;
+}
+
+.spec-pill {
+    background: var(--vj-bg-light);
+    border: 1px solid var(--vj-border);
+    padding: 4px 10px;
+    border-radius: var(--vj-radius-full);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.tour-row-footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid var(--vj-border);
+}
+
+.tour-row-price-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--vj-primary);
+}
+
+/* ====================================================================
+   TRANG CHI TIẾT TOUR (TOUR DETAIL & ITINERARY)
+   ==================================================================== */
+
+.tour-detail-container {
+    max-width: var(--vj-container);
+    margin: 30px auto 60px;
+}
+
+.tour-detail-hero {
+    position: relative;
+    border-radius: var(--vj-radius-lg);
+    overflow: hidden;
+    margin-bottom: 30px;
+    height: 420px;
+}
+
+.tour-detail-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tour-detail-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 35px 40px;
+    color: #ffffff;
+}
+
+.tour-detail-hero-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.tour-detail-quick-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 2 Column: Left Detail + Right Booking Card */
+.tour-detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 35px;
+}
+
+.tour-detail-section {
+    background: #ffffff;
+    border: 1px solid var(--vj-border);
+    border-radius: var(--vj-radius-lg);
+    padding: 28px;
+    margin-bottom: 30px;
+    box-shadow: var(--vj-shadow-sm);
+}
+
+.tour-detail-section h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--vj-primary-light);
+}
+
+/* Timeline Lịch Trình Từng Ngày */
+.itinerary-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.itinerary-timeline::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    bottom: 15px;
+    left: 8px;
+    width: 3px;
+    background: #e5e7eb;
+}
+
+.timeline-day-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid var(--vj-border);
+    border-radius: var(--vj-radius-md);
+    padding: 20px;
+    box-shadow: var(--vj-shadow-sm);
+}
+
+.timeline-day-card::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 22px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--vj-primary);
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 0 2px var(--vj-primary);
+}
+
+.day-badge {
+    background: var(--vj-primary);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: var(--vj-radius-full);
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.day-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.day-desc {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.day-meta-tags {
+    display: flex;
+    gap: 15px;
+    font-size: 12px;
+    color: #6b7280;
+    border-top: 1px dashed var(--vj-border);
+    padding-top: 10px;
+}
+
+/* Sticky Booking Card */
+.tour-sticky-booking-card {
+    background: #ffffff;
+    border: 2px solid var(--vj-border);
+    border-radius: var(--vj-radius-lg);
+    padding: 28px;
+    box-shadow: var(--vj-shadow-md);
+    height: fit-content;
+    position: sticky;
+    top: 90px;
+}
+
+.booking-card-price-header {
+    border-bottom: 1px solid var(--vj-border);
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+}
+
+.booking-card-price {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--vj-primary);
+}
+
+.passenger-counter-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--vj-border);
+}
+
+.counter-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.counter-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--vj-border);
+    background: #f9fafb;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--vj-transition);
+}
+
+.counter-btn:hover {
+    background: var(--vj-primary);
+    color: #ffffff;
+    border-color: var(--vj-primary);
+}
+
+.counter-val {
+    font-size: 16px;
+    font-weight: 700;
+    min-width: 20px;
+    text-align: center;
+}
+
+.booking-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.booking-total-price {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--vj-primary);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+    .tours-layout {
+        grid-template-columns: 1fr;
+    }
+    .tour-item-row {
+        grid-template-columns: 1fr;
+    }
+    .tour-row-thumb-wrap {
+        height: 200px;
+    }
+    .tour-detail-layout {
+        grid-template-columns: 1fr;
+    }
+    .tour-sticky-booking-card {
+        position: static;
+    }
+}

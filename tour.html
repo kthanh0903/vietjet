@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Du Lịch Trọn Gói - Vietjet Holidays</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/1794032794428_7798941419347914444_g4111106518249197050_b20246c106060b907dfe9e17d280275d.jpg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tour.css">
+    <!-- SQLite WebAssembly -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div>🏖️ Tour du lịch trọn gói Vietjet Holidays - Trọn niềm vui, trọn trải nghiệm</div>
+            <div>Hotline tư vấn Tour: <a href="tel:19001886" class="hotline-link">📞 1900 1886</a></div>
+        </div>
+    </div>
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+        <div class="navbar-container">
+            <a href="index.html" class="brand-logo" title="Vietjet Airways">
+                <img src="images/1794032794428_7798941419347914444_g4111106518249197050_b20246c106060b907dfe9e17d280275d.jpg" alt="Vietjet Logo">
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Trang Chủ</a>
+                <a href="flights.html" class="nav-link">Chuyến Bay</a>
+                <a href="tour.html" class="nav-link active">Tour Du Lịch</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="cart.html" class="cart-btn" title="Xem giỏ hàng">
+                    <span>🛒 Giỏ Hàng</span>
+                    <span class="cart-badge" style="display: none;">0</span>
+                </a>
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- TOUR HEADER BANNER -->
+    <div class="tour-page-header">
+        <div class="container">
+            <h1>TOUR DU LỊCH TRỌN GÓI CAO CẤP</h1>
+            <p>Khám phá các kỳ quan thiên nhiên, di sản văn hóa và thành phố hiện đại</p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER (2 COLUMNS) -->
+    <main class="container">
+        <div class="tours-layout">
+
+            <!-- BÊN TRÁI: BỘ LỌC TOUR -->
+            <aside class="filter-sidebar">
+                <div class="filter-top">
+                    <h3>Bộ Lọc Tour</h3>
+                    <button type="button" class="btn-reset-filter" onclick="resetTourFilters()">Đặt Lại</button>
+                </div>
+
+                <!-- 1. Sắp xếp giá tour -->
+                <div class="filter-group">
+                    <div class="filter-group-title">Sắp Xếp Giá Tour</div>
+                    <label class="filter-item-label">
+                        <input type="radio" name="tour_sort_price" value="price_asc" checked onchange="applyTourFilters()">
+                        Giá tăng dần (Thấp nhất)
+                    </label>
+                    <label class="filter-item-label">
+                        <input type="radio" name="tour_sort_price" value="price_desc" onchange="applyTourFilters()">
+                        Giá giảm dần (Cao nhất)
+                    </label>
+                </div>
+
+                <!-- 2. Hãng hàng không liên kết -->
+                <div class="filter-group">
+                    <div class="filter-group-title">Hãng Hàng Không</div>
+                    <div id="tourAirlinesFilterList">
+                        <!-- Nạp danh sách hãng bay -->
+                    </div>
+                </div>
+
+                <!-- 3. Thời gian cất cánh (giờ) -->
+                <div class="filter-group">
+                    <div class="filter-group-title">Thời Gian Cất Cánh</div>
+                    <label class="filter-item-label">
+                        <input type="radio" name="tour_time_slot" value="all" checked onchange="applyTourFilters()">
+                        Tất cả các giờ
+                    </label>
+                    <label class="filter-item-label">
+                        <input type="radio" name="tour_time_slot" value="morning" onchange="applyTourFilters()">
+                        Buổi sáng (06:00 - 12:00)
+                    </label>
+                    <label class="filter-item-label">
+                        <input type="radio" name="tour_time_slot" value="afternoon" onchange="applyTourFilters()">
+                        Buổi chiều (12:00 - 18:00)
+                    </label>
+                    <label class="filter-item-label">
+                        <input type="radio" name="tour_time_slot" value="night" onchange="applyTourFilters()">
+                        Buổi tối (18:00 - 24:00)
+                    </label>
+                </div>
+            </aside>
+
+            <!-- BÊN PHẢI: DANH SÁCH TOUR DU LỊCH -->
+            <section>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <div style="font-weight: 700; color: #4b5563; font-size: 16px;">
+                        Có <span id="tourResultCount" style="color: var(--vj-primary);">0</span> tour du lịch sẵn sàng phục vụ
+                    </div>
+                </div>
+
+                <div id="tourResultsList" class="tour-list-results">
+                    <div style="text-align: center; padding: 40px; color: #6b7280;">
+                        Đang tải danh sách tour du lịch từ SQLite...
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-bottom" style="border: none; padding-top: 0;">
+            <div>© 2026 Vietjet Holidays. Tất cả các quyền được bảo lưu.</div>
+            <div>Hotline: 1900 1886 | Email: tour@vietjetair.com</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/database.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/tour.js"></script>
+</body>
+</html>

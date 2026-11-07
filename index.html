@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vietjet - Đặt Vé Máy Bay & Tour Du Lịch Trọn Gói Giá Tốt Nhất</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/1794032794428_7798941419347914444_g4111106518249197050_b20246c106060b907dfe9e17d280275d.jpg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- SQLite WebAssembly (SQL.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div>✈️ Bay cùng Vietjet - Hàng ngàn vé 0 đồng & Tour du lịch trọn gói 2026</div>
+            <div>
+                <span>Tổng đài CSKH 24/7: </span>
+                <a href="tel:19001886" class="hotline-link">📞 1900 1886</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SITE HEADER & NAVBAR -->
+    <header class="site-header">
+        <div class="navbar-container">
+            <a href="index.html" class="brand-logo" title="Vietjet Airways">
+                <img src="images/1794032794428_7798941419347914444_g4111106518249197050_b20246c106060b907dfe9e17d280275d.jpg" alt="Vietjet Logo">
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Trang Chủ</a>
+                <a href="flights.html" class="nav-link">Chuyến Bay</a>
+                <a href="tour.html" class="nav-link">Tour Du Lịch</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="cart.html" class="cart-btn" title="Xem giỏ hàng">
+                    <span>🛒 Giỏ Hàng</span>
+                    <span class="cart-badge" style="display: none;">0</span>
+                </a>
+                <button class="mobile-menu-toggle" aria-label="Menu Mobile">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION & FLIGHT SEARCH BOX -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-heading">
+                <h1>BAY LÀ THÍCH NGAY CÙNG VIETJET</h1>
+                <p>Khám phá Việt Nam và Thế giới với giá vé tốt nhất mỗi ngày</p>
+            </div>
+
+            <!-- SEARCH BOX WIDGET -->
+            <div class="flight-search-box">
+                <form id="flightSearchForm" onsubmit="handleSearchFlights(event)">
+                    <!-- Trip Type Radio -->
+                    <div class="search-trip-types">
+                        <label class="trip-radio-label">
+                            <input type="radio" name="search_trip_type" value="round_trip" checked onchange="toggleTripType('round_trip')">
+                            Khứ Hồi
+                        </label>
+                        <label class="trip-radio-label">
+                            <input type="radio" name="search_trip_type" value="one_way" onchange="toggleTripType('one_way')">
+                            Một Chiều
+                        </label>
+                    </div>
+
+                    <!-- Fields Grid -->
+                    <div class="search-fields-grid">
+                        <div class="form-group">
+                            <label>Điểm Xuất Phát</label>
+                            <select id="searchOrigin" class="form-control" required>
+                                <option value="">Đang tải sân bay...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Điểm Đến</label>
+                            <select id="searchDestination" class="form-control" required>
+                                <option value="">Đang tải sân bay...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ngày Đi</label>
+                            <input type="date" id="searchDepartDate" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="returnDateLabel">Ngày Về</label>
+                            <input type="date" id="searchReturnDate" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Hạng Ghế</label>
+                            <select id="searchCabinClass" class="form-control">
+                                <option value="economy">Phổ Thông</option>
+                                <option value="business">Thương Gia</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg" style="height: 44px; white-space: nowrap;">
+                                🔍 Tìm Kiếm
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8 FEATURED TOURS -->
+    <section class="featured-tours-section">
+        <div class="container">
+            <h2 class="section-title">TOUR DU LỊCH NỔI BẬT</h2>
+            <p class="section-subtitle">8 điểm đến hấp dẫn được du khách yêu thích nhất năm 2026</p>
+
+            <!-- Grid 8 Tours -->
+            <div id="featuredToursGrid" class="tours-grid">
+                <!-- Javascript sẽ nạp 8 tour từ SQLite tại đây -->
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #6b7280;">
+                    Đang nạp 8 tour nổi bật từ cơ sở dữ liệu SQLite...
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="tour.html" class="btn btn-outline btn-lg">Xem Tất Cả Tour Du Lịch →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION AIRLINES PARTNER -->
+    <section class="airlines-partner-section">
+        <div class="container">
+            <h2 class="section-title">CÁC HÃNG HÀNG KHÔNG ĐỐI TÁC</h2>
+            <p class="section-subtitle">Đồng hành trên hàng ngàn hành trình an toàn, thuận tiện và tiết kiệm</p>
+
+            <!-- Grid Airlines -->
+            <div id="airlinesGrid" class="airlines-grid">
+                <!-- Javascript sẽ nạp danh sách hãng hàng không từ SQLite tại đây -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SITE FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/1794032794428_7798941419347914444_g4111106518249197050_b20246c106060b907dfe9e17d280275d.jpg" alt="Vietjet Logo" style="height: 45px; border-radius: 4px; margin-bottom: 15px;">
+                    <p style="margin-bottom: 12px; font-size: 13px;">Công ty Cổ phần Hàng không Vietjet - Tiên phong mang đến cơ hội bay với chi phí tiết kiệm và dịch vụ thân thiện, vượt trội.</p>
+                    <p style="font-size: 13px;">📍 Tầng 8, Tòa nhà Vietjet, TP. Hồ Chí Minh, Việt Nam</p>
+                    <p style="font-size: 13px;">📞 Hotline: <strong>1900 1886</strong></p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Về Vietjet</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Giới thiệu Vietjet</a></li>
+                        <li><a href="flights.html">Mạng lưới đường bay</a></li>
+                        <li><a href="tour.html">Dịch vụ Tour trọn gói</a></li>
+                        <li><a href="cart.html">Kiểm tra đặt chỗ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Hỗ Trợ Khách Hàng</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Điều kiện vé & Hành lý</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Hình thức thanh toán</a></li>
+                        <li><a href="#">Câu hỏi thường gặp (FAQ)</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Nhận Thông Tin Khuyến Mãi</h4>
+                    <p style="font-size: 13px; margin-bottom: 12px;">Đăng ký để không bỏ lỡ vé 0 đồng và ưu đãi đặc quyền.</p>
+                    <div style="display: flex; gap: 6px;">
+                        <input type="email" placeholder="Email của bạn..." class="form-control" style="font-size: 13px;">
+                        <button class="btn btn-secondary btn-sm" onclick="showToast('Đăng ký nhận tin thành công!')">Gửi</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© 2026 Vietjet. Tất cả các quyền được bảo lưu. Thiết kế phục vụ dự án thương mại điện tử du lịch.</div>
+                <div>Thanh toán an toàn với VietQR, Visa, Mastercard, ATM</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="js/database.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

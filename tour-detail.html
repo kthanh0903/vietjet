@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Tour Du Lịch - Vietjet Holidays</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/1794032794428_7798941419347914444_g4111106518249197050_b20246c106060b907dfe9e17d280275d.jpg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tour.css">
+    <!-- SQLite WebAssembly -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div>🏖️ Đặt tour trọn gói Vietjet Holidays - Trọn gói vé máy bay, khách sạn & tham quan</div>
+            <div>Hotline CSKH: <a href="tel:19001886" class="hotline-link">📞 1900 1886</a></div>
+        </div>
+    </div>
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+        <div class="navbar-container">
+            <a href="index.html" class="brand-logo" title="Vietjet Airways">
+                <img src="images/1794032794428_7798941419347914444_g4111106518249197050_b20246c106060b907dfe9e17d280275d.jpg" alt="Vietjet Logo">
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Trang Chủ</a>
+                <a href="flights.html" class="nav-link">Chuyến Bay</a>
+                <a href="tour.html" class="nav-link active">Tour Du Lịch</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="cart.html" class="cart-btn" title="Xem giỏ hàng">
+                    <span>🛒 Giỏ Hàng</span>
+                    <span class="cart-badge" style="display: none;">0</span>
+                </a>
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN TOUR DETAIL CONTENT -->
+    <main class="container">
+        <div class="tour-detail-container">
+
+            <div style="margin-bottom: 20px;">
+                <a href="tour.html" style="color: var(--vj-primary); font-weight: 600; font-size: 14px;">
+                    ← Quay lại danh sách Tour du lịch
+                </a>
+            </div>
+
+            <!-- HERO OVERVIEW BANNER -->
+            <div id="tourHeroSection" class="tour-detail-hero">
+                <!-- Javascript nạp ảnh và tiêu đề tour tại đây -->
+            </div>
+
+            <!-- 2-COLUMN LAYOUT -->
+            <div class="tour-detail-layout">
+
+                <!-- CỘT TRÁI: NỘI DUNG TOUR & LỊCH TRÌNH -->
+                <div class="tour-main-content">
+
+                    <!-- Thông tin chuyến bay & Hãng vận chuyển -->
+                    <div class="tour-detail-section">
+                        <h3>✈️ THÔNG TIN VẬN CHUYỂN & HÀNH TRÌNH BAY</h3>
+                        <div id="flightTourMeta" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; font-size: 14px;">
+                            <!-- Javascript nạp thông tin điểm đi, điểm đến, hãng bay, máy bay -->
+                        </div>
+                    </div>
+
+                    <!-- Lịch trình chi tiết các ngày (Itinerary Timeline) -->
+                    <div class="tour-detail-section">
+                        <h3>📅 LỊCH TRÌNH CHUYẾN ĐI CHI TIẾT</h3>
+                        <div id="tourItineraryTimeline" class="itinerary-timeline">
+                            <!-- Javascript nạp lịch trình từng ngày -->
+                        </div>
+                    </div>
+
+                    <!-- Dịch vụ bao gồm & Không bao gồm -->
+                    <div class="tour-detail-section">
+                        <h3>📋 DỊCH VỤ BAO GỒM & QUY ĐỊNH</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 14px;">
+                            <div>
+                                <h4 style="color: #10b981; margin-bottom: 10px;">✅ Dịch Vụ Bao Gồm</h4>
+                                <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; color: #4b5563;">
+                                    <li>✓ Vé máy bay khứ hồi (gồm 7kg xách tay + 20kg ký gửi)</li>
+                                    <li>✓ Khách sạn tiêu chuẩn 4 - 5 sao (2 khách/phòng)</li>
+                                    <li>✓ Xe du lịch máy lạnh chất lượng cao đón tiễn</li>
+                                    <li>✓ Các bữa ăn chính đặc sản theo lịch trình</li>
+                                    <li>✓ Vé tham quan tất cả các điểm trong chương trình</li>
+                                    <li>✓ Hướng dẫn viên nhiệt tình suốt tuyến</li>
+                                    <li>✓ Bảo hiểm du lịch với mức bồi thường 50.000.000 ₫/vụ</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: #ef4444; margin-bottom: 10px;">❌ Chưa Bao Gồm</h4>
+                                <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; color: #6b7280;">
+                                    <li>✗ Chi phí cá nhân: giặt ủi, điện thoại, ăn uống ngoài</li>
+                                    <li>✗ Tiền bồi dưỡng (Tip) cho HDV và tài xế</li>
+                                    <li>✗ Phụ thu phòng đơn nếu đi 1 mình</li>
+                                    <li>✗ Thuế VAT 10% (nếu lấy hóa đơn đỏ)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- CỘT PHẢI: STICKY BOOKING CARD -->
+                <aside>
+                    <div class="tour-sticky-booking-card">
+                        <div class="booking-card-price-header">
+                            <span style="font-size: 13px; color: #6b7280;">Giá trọn gói khởi điểm:</span>
+                            <div id="tourPriceDisplay" class="booking-card-price">0 ₫</div>
+                            <span style="font-size: 12px; color: #10b981; font-weight: 600;">✓ Đã bao gồm vé máy bay & khách sạn</span>
+                        </div>
+
+                        <!-- Chọn số lượng khách -->
+                        <div style="margin-bottom: 20px;">
+                            <div class="passenger-counter-group">
+                                <div>
+                                    <div style="font-weight: 700; font-size: 14px;">Người Lớn (12+ tuổi)</div>
+                                    <div style="font-size: 12px; color: #6b7280;">100% giá tour</div>
+                                </div>
+                                <div class="counter-controls">
+                                    <button type="button" class="counter-btn" onclick="changeGuestCount('adult', -1)">−</button>
+                                    <span id="adultCount" class="counter-val">1</span>
+                                    <button type="button" class="counter-btn" onclick="changeGuestCount('adult', 1)">+</button>
+                                </div>
+                            </div>
+
+                            <div class="passenger-counter-group">
+                                <div>
+                                    <div style="font-weight: 700; font-size: 14px;">Trẻ Em (2 - 11 tuổi)</div>
+                                    <div style="font-size: 12px; color: #6b7280;">75% giá tour (có giường riêng)</div>
+                                </div>
+                                <div class="counter-controls">
+                                    <button type="button" class="counter-btn" onclick="changeGuestCount('child', -1)">−</button>
+                                    <span id="childCount" class="counter-val">0</span>
+                                    <button type="button" class="counter-btn" onclick="changeGuestCount('child', 1)">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tổng tiền tạm tính -->
+                        <div class="booking-total-row">
+                            <span style="font-weight: 700; color: #374151;">Tạm tính:</span>
+                            <span id="tourTotalCalcPrice" class="booking-total-price">0 ₫</span>
+                        </div>
+
+                        <!-- Nút đặt tour lưu vào giỏ hàng -->
+                        <button type="button" class="btn btn-primary btn-block btn-lg" onclick="saveTourToCart()">
+                            🛒 Đặt Tour / Lưu Vào Giỏ Hàng
+                        </button>
+
+                        <p style="text-align: center; font-size: 12px; color: #9ca3af; margin-top: 12px;">
+                            🛡️ Đặt chỗ an toàn • Không mất phí giữ chỗ 24h
+                        </p>
+                    </div>
+                </aside>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-bottom" style="border: none; padding-top: 0;">
+            <div>© 2026 Vietjet Holidays. Tất cả các quyền được bảo lưu.</div>
+            <div>Hotline: 1900 1886 | Email: tour@vietjetair.com</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/database.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/tour-detail.js"></script>
+</body>
+</html>
